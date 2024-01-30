@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'djongo',
+
+    'categories.apps.CategoriesConfig',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mongo_drf.urls'
+ROOT_URLCONF = 'Parts_Warehouse_API.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mongo_drf.wsgi.application'
+WSGI_APPLICATION = 'Parts_Warehouse_API.wsgi.application'
 
 
 # Database
