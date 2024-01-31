@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'djongo',
 
     'categories.apps.CategoriesConfig',
+    'parts.apps.PartsConfig',
 ]
 
 MIDDLEWARE = [
