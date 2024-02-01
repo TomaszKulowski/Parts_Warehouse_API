@@ -17,6 +17,7 @@
          4. [Retrieve Part Details](#retrieve-part-details)
          5. [Update Part](#update-part)
          6. [Delete Part](#delete-part)
+   4. [Tests](#tests)
 
 # Parts Warehouse API
 This repository contains the source code for the Parts Warehouse API, a Django-based application for managing parts and categories.
@@ -113,7 +114,6 @@ Follow these steps to set up the application without using Docker:
 
 6. #### Access the API
     The API will be accessible at http://localhost:8000.
-
 
 
 
@@ -462,3 +462,16 @@ The Parts Warehouse API provides the following endpoints for managing parts and 
       ```
 
 Explore the API endpoints by navigating to http://localhost:8000/categories and http://localhost:8000/parts.
+
+
+### Tests
+To ensure the robustness of the Parts Warehouse API, unit tests will be created in the near future. 
+
+For testing purposes, you can use the following commands to add fake categories:
+```
+python manage.py add_fake_categories -n 10
+```
+or to add fake parts and the categories:
+```
+python manage.py add_fake_parts -n 10
+```
