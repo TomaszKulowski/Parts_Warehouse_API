@@ -116,7 +116,6 @@ Follow these steps to set up the application without using Docker:
 
 
 
-
 ## API Endpoints:
 
 The Parts Warehouse API provides the following endpoints for managing parts and categories.
@@ -462,3 +461,16 @@ The Parts Warehouse API provides the following endpoints for managing parts and 
       ```
 
 Explore the API endpoints by navigating to http://localhost:8000/categories and http://localhost:8000/parts.
+
+
+### Tests
+To ensure the robustness of the Parts Warehouse API, unit tests will be created in the near future. 
+
+For testing purposes, you can use the following commands to add fake categories:
+```
+python manage.py add_fake_categories -n 10
+```
+or to add fake parts and the categories:
+```
+python manage.py add_fake_parts -n 10
+```
