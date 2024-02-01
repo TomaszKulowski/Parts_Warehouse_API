@@ -17,6 +17,7 @@
          4. [Retrieve Part Details](#retrieve-part-details)
          5. [Update Part](#update-part)
          6. [Delete Part](#delete-part)
+   4. [Tests](#tests)
 
 # Parts Warehouse API
 This repository contains the source code for the Parts Warehouse API, a Django-based application for managing parts and categories.
