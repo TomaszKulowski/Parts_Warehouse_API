@@ -38,7 +38,7 @@ class CategorySerializer(serializers.ModelSerializer):
         if instance._id:
             rep['_id'] = str(instance._id)
         if instance.parent_id:
-            rep['parent_id'] = str(instance.parent_id)
+            rep['parent_id'] = str(instance.parent_id._id)
         return rep
 
     def validate(self, attrs: Any) -> dict:
