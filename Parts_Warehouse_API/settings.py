@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import sys
 
 from os import getenv
 from pathlib import Path
@@ -91,9 +92,22 @@ DATABASES = {
         'CLIENT': {
             'host': getenv('MONGO_CONNECTION_STR'),
             'name': getenv('DATABASE_NAME'),
-        }
+        },
     }
 }
+
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'djongo',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': getenv('UNIT_TESTS_MONGO_CONNECTION_STR'),
+                'name': getenv('UNIT_TESTS_DATABASE_NAME'),
+            }
+        }
+    }
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -141,3 +155,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ]
 }
+
+
+TEST_RUNNER = "conftest.DatabaseConnectionCleanupTestRunner"

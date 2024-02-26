@@ -5,7 +5,7 @@ import random
 
 import factory
 
-from .models import Category
+from categories.models import Category
 
 
 CATEGORIES = [
