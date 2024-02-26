@@ -38,7 +38,7 @@ class CategorySerializer(serializers.ModelSerializer):
         if instance._id:
             rep['_id'] = str(instance._id)
         if instance.parent_id:
-            rep['parent_id'] = str(instance.parent_id)
+            rep['parent_id'] = str(instance.parent_id._id)
         return rep
 
     def validate(self, attrs: Any) -> dict:
@@ -60,5 +60,5 @@ class CategorySerializer(serializers.ModelSerializer):
         name = attrs.get('name')
         parent_id = attrs.get('parent_id')
         if Category.objects.filter(name=name, parent_id=parent_id).exists():
-            raise serializers.ValidationError('Category with the same name and parent_id already exists.')
+            raise serializers.ValidationError({'error': 'Category with the same name and parent_id already exists.'})
         return attrs
