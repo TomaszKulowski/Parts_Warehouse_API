@@ -16,7 +16,7 @@ from sys import stdout
 
 from django.core.management import BaseCommand
 
-from categories.factories import SideCategoryFactory
+from categories.tests.factories import SideCategoryFactory
 
 
 class Command(BaseCommand):
