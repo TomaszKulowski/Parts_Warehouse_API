@@ -19,4 +19,4 @@ def valid_object_id(value: str) -> ObjectId:
     try:
         return ObjectId(value)
     except Exception as error:
-        raise serializers.ValidationError(f'Invalid ObjectId: {error}')
+        raise serializers.ValidationError({'error': error})
