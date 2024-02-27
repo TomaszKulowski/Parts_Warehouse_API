@@ -154,7 +154,7 @@ class PartDetails(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class PartSearchView(APIView):
+class PartSearch(APIView):
     """
     API view for searching parts based on specified filters.
 
