@@ -16,7 +16,7 @@ from sys import stdout
 
 from django.core.management import BaseCommand
 
-from parts.factories import PartFactory
+from parts.tests.factories import PartFactory
 
 
 class Command(BaseCommand):
