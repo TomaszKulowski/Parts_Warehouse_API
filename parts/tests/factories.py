@@ -8,8 +8,8 @@ import factory
 
 from faker import Factory as FakerFactory
 
-from .models import Part
-from categories.factories import SideCategoryFactory
+from parts.models import Part
+from categories.tests.factories import SideCategoryFactory
 
 
 PARTS = [
