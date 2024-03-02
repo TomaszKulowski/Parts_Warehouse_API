@@ -1,9 +1,18 @@
 # Table of Contents
-  1. [About implementation](#about-implementation)
-  2. [Setup](#setup)
-     1. [Docker](#docker)
-     2. [Local Setup](#local-setup)
-   3. [API Endpoints](#api-endpoints)
+   1. [Task overview](#task-overview)
+      1. [Parts - Model Description](#1-parts---model-description)
+      2. [Categories - Model Description](#2-categories---model-description)
+      3. [CRUD Operations](#3-crud-operations)
+      4. [Search Endpoints](#4-search-endpoints)
+      5. [Input Validation](#5-input-validation)
+      6. [Dockerization](#6-dockerization)
+      7. [JSON Format](#7-json-format)
+   2. [About implementation](#about-implementation)
+   3. [Setup](#setup)
+      1. [Project Requirements](#project-requirements)
+      2. [Docker](#docker)
+      3. [Local Setup](#local-setup)
+   4. [API Endpoints](#api-endpoints)
       1. [Categories](#categories)
          1. [List All Categories](#list-all-categories)
          2. [Add New Category](#add-new-category)
@@ -17,11 +26,59 @@
          4. [Retrieve Part Details](#retrieve-part-details)
          5. [Update Part](#update-part)
          6. [Delete Part](#delete-part)
-   4. [Tests](#tests)
+   5. [Tests](#tests)
 
-# Parts Warehouse API
-This repository contains the source code for the Parts Warehouse API, a Django-based application for managing parts and categories.
-This application is designed and prepared to seamlessly integrate with MongoDB, a NoSQL database.
+# Task overview:
+Create a simple RestAPI for a Parts Warehouse. The warehouse contains small parts used in electronic repair workshops.
+The API will be connected to a MongoDB database,
+and the developer is expected to create his workspace, with some mockup data.
+The dataset should include two collections: 'parts' and 'categories'.
+The task involves implementing simple CRUD functionality for both collections and adding one additional endpoint for search in a parts collection.
+The application should be containerized using Docker.
+Input validation for both collections must be implemented using object models created by the candidate.
+The API should return results in JSON format.
+
+### 1. Parts - Model Description:
+The 'Part' object model represents each part in the warehouse. The mandatory fields are as follows:
+- serial_number (str): A unique serial number assigned to each part.
+- name (str): The name or model of the part.
+- description (str): A brief description of the part.
+- category (str): The category to which the part belongs (e.g., resistor, capacitor, IC).
+- quantity (int): The quanƟty of the part available in the warehouse.
+- price (float): The price of a single unit of the part.
+- location (dict): A dictionary specifying the exact location of the part in the warehouse, including
+sections such as room, bookcase, shelf, cuvette, column, row.
+
+### 2. Categories - Model Description:
+The 'Category' object model represents the categories to which parts belong. The mandatory fields are as follows:
+- name (str): The name of the category.
+- parent_name (str): If empty, this is a base category. This will be used to create a category tree.
+
+### 3. CRUD Operations:
+- Parts collection:
+   - Implement CRUD operations (Create, Read, Update, Delete) for the 'parts' collection.
+   - Ensure that a part cannot be assigned to a base category.
+- Categories collection:
+   - Implement CRUD operations for the 'categories' collection.
+   - Ensure that a category cannot be removed if there are parts assigned to it.
+   - Ensure that a parent category cannot be removed if it has child categories.
+
+### 4. Search Endpoints:
+Create one additional endpoint:
+- Search for parts based on all mandatory fields – your own implementation.
+
+### 5. Input Validation:
+- Implement input validation for both collections.
+- Pay special attention to the 'location' field in the 'parts' dataset, which includes sections such as
+room, bookcase, shelf, cuvette, column, row.
+- Ensure that each part belongs to a category and that a part cannot be in a base category.
+
+### 6. Dockerization:
+ - Dockerize the application, ensuring that it can be easily deployed and run in a containerized environment.
+
+### 7. JSON Format:
+- Ensure that the API returns results in JSON format and can be consumed with Postman.
+
 
 ## About implementation
 In the 'category' field of the Parts model, I decided to store 'category_id (id)' instead of 'category (str)'.
@@ -41,10 +98,15 @@ To implement the requested API,
 I used the Django Rest Framework because,
 based on the initial requirements,
 I concluded that such an application would require features like authentication in the future,
-which is built into the framework I chose. Additionally,
-it is simple and quick to develop.
+which is built into the framework I chose. Additionally, it is simple and quick to develop.
 
 ## Setup
+
+### Project Requirements
+This project requires Python 3.11 or higher.
+
+Please make sure you have Python 3.11 installed on your system before running any scripts or executing the project.
+You can download Python 3.11 from the official Python website.
 
 ### Docker
 Ensure that Docker is installed on your machine. You can download and install Docker from the official Docker website.
