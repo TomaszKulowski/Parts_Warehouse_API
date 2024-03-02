@@ -2,9 +2,9 @@ name: test Django
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: [ "main"]
   pull_request:
-    branches: [ "main", "develop" ]
+    branches: [ "main"]
 
 jobs:
   build:
@@ -28,5 +28,7 @@ jobs:
     - name: Run Tests
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        TEST_MONGO_CONNECTION_STR: ${{ secrets.TEST_MONGO_CONNECTION_STR }}
+        TEST_DATABASE_NAME: ${{ secrets.TEST_DATABASE_NAME }}
       run: |
         python manage.py test
