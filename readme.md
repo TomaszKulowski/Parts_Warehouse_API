@@ -471,8 +471,26 @@ Explore the API endpoints by navigating to http://localhost:8000/categories and 
 
 
 ### Tests
-To ensure the robustness of the Parts Warehouse API, unit tests will be created in the near future. 
+This repository contains tests for the project. Below are instructions on how to run the tests.
 
+To run the tests, follow these steps:
+
+#### Running Tests
+
+Navigate to the root directory of the project in your terminal.
+Run the following command:
+
+   ```
+   python manage.py test
+   ```
+
+This command will execute all the tests defined within the project.
+After running the command, you will see the test results displayed in the terminal.
+
+Make sure all tests pass before pushing changes to the repository or deploying the project.
+If any tests fail, review the output to identify and fix the issues before proceeding.
+
+#### Additional testing commands
 For testing purposes, you can use the following commands to add fake categories:
 ```
 python manage.py add_fake_categories -n 10
