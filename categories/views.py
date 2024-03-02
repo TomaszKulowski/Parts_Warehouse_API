@@ -110,11 +110,19 @@ class CategoryDetails(APIView):
         """
         parent_id = request.data.get('parent_id')
         data = request.data.copy()
+        category = get_object_or_404(Category, pk=valid_object_id(object_id))
+
         if parent_id:
             parent_category = get_object_or_404(Category, pk=valid_object_id(parent_id))
             data['parent_id'] = parent_category._id
+        else:
+            parts = category.part_set.all()
+            if parts:
+                return Response(
+                    {'error': 'Cannot change category with assigned products to a base category.'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
 
-        category = get_object_or_404(Category, pk=valid_object_id(object_id))
         serializer = CategorySerializer(category, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()

@@ -3,6 +3,7 @@ This module contains unit tests for testing the CategorySerializer class.
 """
 import pytest
 
+from rest_framework.exceptions import ErrorDetail
 from rest_framework.serializers import ValidationError
 from django.test import TestCase
 
@@ -86,9 +87,12 @@ class TestCategorySerializer(TestCase):
             self.serializer.validate(self.side_category_attributes)
 
         error_type = ValidationError
-        error_message = 'Category with the same name and parent_id already exists.'
 
         assert main_category_error.type == error_type
-        assert main_category_error.value.detail[0] == error_message
+        assert main_category_error.value.detail == {
+            'error': ErrorDetail(
+                string='Category with the same name and parent_id already exists.',
+                code='invalid'
+            )
+        }
         assert side_category_error.type == error_type
-        assert side_category_error.value.detail[0] == error_message
