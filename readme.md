@@ -64,6 +64,9 @@ Follow these steps to set up and run the Dockerized application:
    ENV SECRET_KEY = 'Django secret key'
    ENV MONGO_CONNECTION_STR = 'mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database_name>?retryWrites=true&w=majority'
    ENV DATABASE_NAME = 'Database name'
+
+   ENV TEST_MONGO_CONNECTION_STR = 'mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database_name>?retryWrites=true&w=majority'
+   ENV TEST_DATABASE_NAME = 'Test database name'
    ```
 
 3. #### Build and Run the Docker Container
@@ -98,6 +101,9 @@ Follow these steps to set up the application without using Docker:
    SECRET_KEY = 'Django secret key'
    MONGO_CONNECTION_STR = 'mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database_name>?retryWrites=true&w=majority'
    DATABASE_NAME = 'Database name'
+
+   TEST_MONGO_CONNECTION_STR = 'mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database_name>?retryWrites=true&w=majority'
+   TEST_DATABASE_NAME = 'Test database name'
    ```
 
 4. #### Install Dependencies

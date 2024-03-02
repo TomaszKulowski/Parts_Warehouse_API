@@ -102,8 +102,8 @@ if 'test' in sys.argv:
             'ENGINE': 'djongo',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': getenv('UNIT_TESTS_MONGO_CONNECTION_STR'),
-                'name': getenv('UNIT_TESTS_DATABASE_NAME'),
+                'host': getenv('TEST_MONGO_CONNECTION_STR'),
+                'name': getenv('TEST_DATABASE_NAME'),
             }
         }
     }
