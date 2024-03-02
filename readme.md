@@ -9,8 +9,9 @@
       7. [JSON Format](#7-json-format)
    2. [About implementation](#about-implementation)
    3. [Setup](#setup)
-      1. [Docker](#docker)
-      2. [Local Setup](#local-setup)
+      1. [Project Requirements](#project-requirements)
+      2. [Docker](#docker)
+      3. [Local Setup](#local-setup)
    4. [API Endpoints](#api-endpoints)
       1. [Categories](#categories)
          1. [List All Categories](#list-all-categories)
@@ -100,6 +101,12 @@ I concluded that such an application would require features like authentication 
 which is built into the framework I chose. Additionally, it is simple and quick to develop.
 
 ## Setup
+
+### Project Requirements
+This project requires Python 3.11 or higher.
+
+Please make sure you have Python 3.11 installed on your system before running any scripts or executing the project.
+You can download Python 3.11 from the official Python website.
 
 ### Docker
 Ensure that Docker is installed on your machine. You can download and install Docker from the official Docker website.
