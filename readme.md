@@ -61,9 +61,9 @@ Follow these steps to set up and run the Dockerized application:
    Adjust the Dockerfile to either set environment variables directly
    or utilize a .env file for managing environment configurations:
    ```
-   SECRET_KEY = 'Django secret key'
-   MONGO_CONNECTION_STR = 'mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database_name>?retryWrites=true&w=majority'
-   DATABASE_NAME = 'Database name'
+   ENV SECRET_KEY = 'Django secret key'
+   ENV MONGO_CONNECTION_STR = 'mongodb+srv://<username>:<password>@<cluster_name>.mongodb.net/<database_name>?retryWrites=true&w=majority'
+   ENV DATABASE_NAME = 'Database name'
    ```
 
 3. #### Build and Run the Docker Container
