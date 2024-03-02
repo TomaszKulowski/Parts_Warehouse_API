@@ -15,13 +15,13 @@ These patterns define the endpoints for handling part-related operations.
 """
 from django.urls import path
 
-from .views import PartsList, PartDetails, PartSearchView
+from .views import PartsList, PartDetails, PartSearch
 
 
 app_name = 'parts'
 
 urlpatterns = [
     path('', PartsList.as_view(), name='parts_list'),
-    path('search/', PartSearchView.as_view(), name='parts_search'),
+    path('search/', PartSearch.as_view(), name='parts_search'),
     path('<str:object_id>/', PartDetails.as_view(), name='part_details'),
 ]

@@ -1,3 +1,5 @@
+from bson import ObjectId
+
 from django.core.exceptions import ValidationError
 from django.http import JsonResponse, HttpRequest
 from django.shortcuts import get_object_or_404
@@ -154,7 +156,7 @@ class PartDetails(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class PartSearchView(APIView):
+class PartSearch(APIView):
     """
     API view for searching parts based on specified filters.
 
@@ -164,6 +166,7 @@ class PartSearchView(APIView):
 
     The response includes the serialized data of matching parts.
     """
+
     def get_queryset(self):
         """
         Get the queryset based on request filters.
@@ -172,7 +175,10 @@ class PartSearchView(APIView):
             QuerySet: The filtered queryset of parts.
         """
         queryset = Part.objects.all()
-        queryset_filters = self.request.GET
+        queryset_filters = self.request.GET.copy()
+        if 'category_id' in queryset_filters:
+            queryset_filters['category_id'] = ObjectId(queryset_filters['category_id'])
+
         fields_name = [field.name for field in Part._meta.get_fields()]
         for key, value in queryset_filters.items():
             if key not in fields_name:
